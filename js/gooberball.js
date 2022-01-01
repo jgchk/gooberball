@@ -26,6 +26,9 @@ function preload() {
 }
 
 function setup() {
+  const audio = createAudio('audio/hopper1000-1.mp3')
+  audio.autoplay(true)
+
   mouseSensitivity = 1 / windowWidth
   moveSpeed = 4
 
@@ -258,7 +261,6 @@ function intersectDisk(
   const p = p5.Vector.add(rayOrigin, p5.Vector.mult(rayDirection, t))
   const v = p5.Vector.sub(p, diskPosition)
   const d2 = p5.Vector.dot(v, v)
-  console.log(sqrt(d2))
   return sqrt(d2) <= diskRadius
 }
 
@@ -269,5 +271,5 @@ function onSphereClick() {
 
 function onDiskClick() {
   if (!isPointerLocked) return
-  console.log('DISK')
+  window.location.href = '/dots.html'
 }
