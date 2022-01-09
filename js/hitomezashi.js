@@ -16,7 +16,7 @@ function setup() {
   seed2Input.input(onInput)
 
   saveButton = createButton('Download')
-  saveButton.mouseClicked(() => saveCanvas('hitomezashi', 'png'))
+  saveButton.mouseClicked(() => saveCanvas(`hitomezashi-${Date.now()}`, 'png'))
 
   inputContainer = createDiv()
   inputContainer.id('inputs')
