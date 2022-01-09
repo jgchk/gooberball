@@ -1,12 +1,11 @@
 let seed1Input
 let seed2Input
+let inputContainer
 let saveButton
 
 let margin = 0.1
 
 function setup() {
-  const size = min(windowWidth, windowHeight * 0.85)
-  createCanvas(size, size)
   seed1Input = createInput('')
   seed2Input = createInput('')
 
@@ -19,17 +18,26 @@ function setup() {
   saveButton = createButton('Download')
   saveButton.mouseClicked(() => saveCanvas('hitomezashi', 'png'))
 
-  const inputContainer = createDiv()
+  inputContainer = createDiv()
   inputContainer.id('inputs')
   seed1Input.parent(inputContainer)
   seed2Input.parent(inputContainer)
   saveButton.parent(inputContainer)
 
+  const size = min(
+    window.innerWidth,
+    window.innerHeight - inputContainer.size().height
+  )
+  createCanvas(size, size)
+
   noLoop()
 }
 
 function windowResized() {
-  const size = min(windowWidth, windowHeight * 0.85)
+  const size = min(
+    window.innerWidth,
+    window.innerHeight - inputContainer.size().height
+  )
   resizeCanvas(size, size)
 }
 
